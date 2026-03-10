@@ -15,25 +15,25 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/v1/urls")
 public class UrlController {
 
-    private final UrlService urlService;
+  private final UrlService urlService;
 
-    public UrlController(UrlService urlService) {
-        this.urlService = urlService;
-    }
+  public UrlController(UrlService urlService) {
+    this.urlService = urlService;
+  }
 
-    @PostMapping
-    public ResponseEntity<UrlResponseDTO> create(@Valid @RequestBody CreateUrlRequestDto request) {
-        UrlResponseDTO response = urlService.createUrl(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
-    }
+  @PostMapping
+  public ResponseEntity<UrlResponseDTO> create(@Valid @RequestBody CreateUrlRequestDto request) {
+    UrlResponseDTO response = urlService.createUrl(request);
+    return ResponseEntity.status(HttpStatus.CREATED).body(response);
+  }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<UrlResponseDTO> getById(@PathVariable String id) {
-        return ResponseEntity.ok(urlService.getUrl(id));
-    }
+  @GetMapping("/{id}")
+  public ResponseEntity<UrlResponseDTO> getById(@PathVariable String id) {
+    return ResponseEntity.ok(urlService.getUrl(id));
+  }
 
-    @GetMapping
-    public ResponseEntity<Page<UrlResponseDTO>> list(@PageableDefault(size = 20) Pageable pageable) {
-        return ResponseEntity.ok(urlService.listUrls(pageable));
-    }
+  @GetMapping
+  public ResponseEntity<Page<UrlResponseDTO>> list(@PageableDefault(size = 20) Pageable pageable) {
+    return ResponseEntity.ok(urlService.listUrls(pageable));
+  }
 }

@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface UrlRepository extends JpaRepository<Url, String> {
-    @Modifying(clearAutomatically = true)
-    @Query("UPDATE Url url SET url.clicks = url.clicks + 1 WHERE url.id = :id")
-    void incrementClicks(@Param("id") String id);
+  @Modifying(clearAutomatically = true)
+  @Query("UPDATE Url url SET url.clicks = url.clicks + 1 WHERE url.id = :id")
+  void incrementClicks(@Param("id") String id);
 }

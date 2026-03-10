@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CaseShortnerApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(CaseShortnerApplication.class, args);
-    }
-
+  public static void main(String[] args) {
+    SpringApplication.run(CaseShortnerApplication.class, args);
+  }
 }
