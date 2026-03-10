@@ -1,6 +1,7 @@
 package com.desafio.case_shortner.config;
 
 import com.desafio.case_shortner.dataTransferObject.ErrorResponse;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,7 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import tools.jackson.databind.ObjectMapper;
+
 
 @Component
 public class ApiKeyFilter extends OncePerRequestFilter {

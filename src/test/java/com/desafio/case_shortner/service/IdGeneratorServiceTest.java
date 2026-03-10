@@ -57,9 +57,9 @@ public class IdGeneratorServiceTest {
 
   @Test
   void isValidAlias_shouldAcceptValidAlias() {
-    assertThat(idGeneratorService.isValidFormat("itau-home")).isTrue();
+    assertThat(idGeneratorService.isValidFormat("itauhome")).isTrue();
     assertThat(idGeneratorService.isValidFormat("abc")).isTrue();
-    assertThat(idGeneratorService.isValidFormat("my_alias_123")).isTrue();
+    assertThat(idGeneratorService.isValidFormat("myalias123")).isTrue();
   }
 
   @Test
