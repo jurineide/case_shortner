@@ -3,12 +3,14 @@ package com.desafio.case_shortner.dataTransferObject;
 
 import com.desafio.case_shortner.entity.Url;
 
+import java.time.Instant;
+
 public record UrlResponseDTO (
      String id,
      String originalUrl,
      String shortUrl,
-     String created_date,
-     String expiration_date,
+     Instant created_date,
+     Instant expiration_date,
      Integer clicks
 ) {
     public static UrlResponseDTO from(Url url) {
