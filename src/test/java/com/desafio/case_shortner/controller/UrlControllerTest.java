@@ -38,24 +38,24 @@ public class UrlControllerTest {
   @Test
   void createUrl_shouldReturn201WithValidResponse() throws Exception {
     CreateUrlRequestDto request =
-        new CreateUrlRequestDto("https://www.itau.com.br/minha-conta", null, null);
+            new CreateUrlRequestDto("https://www.itau.com.br/minha-conta", null, null);
 
     MvcResult result =
-        mockMvc
-            .perform(
-                post("/v1/urls")
-                    .header("X-API-Key", apiKey)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(objectMapper.writeValueAsString(request)))
-            .andExpect(status().isCreated())
-            .andExpect(jsonPath("$.id").isNotEmpty())
-            .andExpect(jsonPath("$.shortUrl").isNotEmpty())
-            .andExpect(jsonPath("$.originalUrl").value("https://www.itau.com.br/minha-conta"))
-            .andExpect(jsonPath("$.createdAt").isNotEmpty())
-            .andReturn();
+            mockMvc
+                    .perform(
+                            post("/v1/urls")
+                                    .header("X-API-Key", apiKey)
+                                    .contentType(MediaType.APPLICATION_JSON)
+                                    .content(objectMapper.writeValueAsString(request)))
+                    .andExpect(status().isCreated())
+                    .andExpect(jsonPath("$.id").isNotEmpty())
+                    .andExpect(jsonPath("$.shortUrl").isNotEmpty())
+                    .andExpect(jsonPath("$.originalUrl").value("https://www.itau.com.br/minha-conta"))
+                    .andExpect(jsonPath("$.created_date").isNotEmpty())
+                    .andReturn();
 
     UrlResponseDTO response =
-        objectMapper.readValue(result.getResponse().getContentAsString(), UrlResponseDTO.class);
+            objectMapper.readValue(result.getResponse().getContentAsString(), UrlResponseDTO.class);
     assertThat(response.id()).hasSize(6);
   }
 
@@ -147,7 +147,7 @@ public class UrlControllerTest {
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.id").value(id))
         .andExpect(jsonPath("$.originalUrl").value("https://itau.com.br/investimentos"))
-        .andExpect(jsonPath("$.clickCount").value(0));
+        .andExpect(jsonPath("$.clicks").value(0));
   }
 
   @Test
@@ -209,7 +209,7 @@ public class UrlControllerTest {
     mockMvc
         .perform(get("/v1/urls/" + id))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$.clickCount").value(2));
+        .andExpect(jsonPath("$.clicks").value(2));
   }
 
   // --- GET /v1/urls (list) ---

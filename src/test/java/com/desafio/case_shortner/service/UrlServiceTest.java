@@ -57,7 +57,7 @@ public class UrlServiceTest {
     CreateUrlRequestDto request = new CreateUrlRequestDto("https://itau.com.br", null, "my-link");
     UrlResponseDTO response = urlService.createUrl(request);
 
-    assertThat(response.id()).isEqualTo("mylink");
+    assertThat(response.id()).isEqualTo("my-link");
     verify(idGeneratorService, never()).generateUniqueId();
   }
 

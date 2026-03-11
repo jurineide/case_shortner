@@ -38,6 +38,6 @@ public class IdGeneratorService {
 
   public boolean isValidFormat(String format) {
     if (format == null || format.isBlank()) return false;
-    return format.matches("[a-zA-Z0-9]{3,50}");
+    return format.matches("[a-zA-Z0-9_-]{3,50}");
   }
 }

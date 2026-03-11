@@ -44,6 +44,11 @@ public class UrlService {
     String shortUrl = baseUrl + "/" + id;
 
     Url entity = new Url();
+    entity.setId(id);
+    entity.setOriginalUrl(request.originalUrl());
+    entity.setShortUrl(shortUrl);
+    entity.setCreated_date(Instant.now());
+    entity.setExpiration_date(request.expiration_date());
     urlRepository.save(entity);
 
     log.info("Created short URL: id={}, originalUrl={}", id, request.originalUrl());
